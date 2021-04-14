@@ -16,3 +16,13 @@ canvas {
     display: block;
     margin: 60px auto 0;
 }
+
+.score {
+    width: 512px;
+    height: 5vh;
+    display: flex;
+    margin: 3vh auto;
+    background-color: lightgreen;
+    justify-content: center;
+    align-items: center;
+}
