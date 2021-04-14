@@ -1,6 +1,18 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 200px;
+    height: 95vh;
+    width: 95vw;
+    max-height: 900px;
+}
+
+header {
+    width: 92vw;
+    height: 8vh;
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+}
+
+canvas {
+    display: block;
+    margin: 60px auto 0;
 }
