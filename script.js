@@ -3,7 +3,7 @@ let context = canvas.getContext("2d");
 let box = 32;
 let snake = [];
 let direction = "right";
-let game = setInterval(startGame, 1000);
+let game = setInterval(startGame, 100);
 
 snake[0] = {
     x: 0 * box,
@@ -45,6 +45,13 @@ function startGame() {
     createBG();
     createSnake();
     createFood();
+
+    for (i = 1; i < snake.length; i++) {
+        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+            clearInterval(game);
+            alert('G4M3 0V3R!');
+        }
+    }
 
     if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
     if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
