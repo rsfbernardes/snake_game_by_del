@@ -22,7 +22,6 @@ canvas {
     height: 5vh;
     display: flex;
     margin: 3vh auto;
-    background-color: lightgreen;
     justify-content: center;
     align-items: center;
 }

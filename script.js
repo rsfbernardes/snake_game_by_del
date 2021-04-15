@@ -4,7 +4,7 @@ let box = 32;
 let snake = [];
 let direction = "right";
 let game = setInterval(startGame, 100);
-let score = 0;
+let showScore = document.getElementById("score");
 
 snake[0] = {
     x: 8 * box,
@@ -13,7 +13,7 @@ snake[0] = {
 
 let food = {
     x: Math.floor(Math.random() * 15 + 1) * box,
-    y: Math.floor(Math.random() * 15 + 1) * box
+    y: Math.floor(Math.random() * 15 + 1) * box,
 }
 
 function createBG() {
@@ -45,7 +45,6 @@ function update(event) {
 }
 
 function startGame() {
-
     if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
     if(snake[0].x < 0 && direction == "left") snake[0].x = 15 * box;
     if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
@@ -58,7 +57,8 @@ function startGame() {
     for (i = 1; i < snake.length; i++) {
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
             clearInterval(game);
-            alert('G4M3 0V3R! O Mito sentou na cobra');
+            showScore.innerHTML = ` G4M3 0V3R!! YOUR SCORE IS ${snake.length - 1}`;
+            showScore.style.cssText = 'background:lightgreen;' + 'font-size: 30px;';
         }
     }
     
