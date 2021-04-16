@@ -1,3 +1,9 @@
+:root {
+    --bc-color: lightslategray;
+    --header-color: lightgreen;
+    --h3-color: lightyellow;
+}
+
 body {
     height: 92vh;
     width: 92vw;
@@ -12,8 +18,8 @@ header {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
-    background-color: lightslategray;
-    color: lightgreen;
+    background-color: var(--bc-color);
+    color: var(--header-color);
 }
 
 h3 {
@@ -23,8 +29,8 @@ h3 {
     margin:  auto;
     justify-content: space-around;
     align-items: center;
-    background-color: lightgreen;
     font-size: 30px;
+    color: var(--h3-color);
 }
 
 canvas {
