@@ -5,6 +5,9 @@ let snake = [];
 let direction = "right";
 let game = setInterval(startGame, 100);
 let showScore = document.getElementById("score");
+let showHighScore = document.getElementById("highScore");
+let points = snake.length;
+let highScore = 0;
 
 snake[0] = {
     x: 8 * box,
@@ -33,6 +36,11 @@ function createFood(){
     context.fillRect(food.x, food.y, box, box);
 }
 
+function score(){
+    showScore.innerHTML = `SCORE: ${snake.length-1}`;
+    showHighScore.innerHTML = `HIGHSCORE: ${highScore}`;
+}
+
 document.addEventListener('keydown', update);
 
 function update(event) {
@@ -53,12 +61,12 @@ function startGame() {
     createBG();
     createSnake();
     createFood();
+    score();
 
     for (i = 1; i < snake.length; i++) {
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
             clearInterval(game);
-            showScore.innerHTML = ` G4M3 0V3R!! YOUR SCORE IS ${snake.length - 1}`;
-            showScore.style.cssText = 'background:lightgreen;' + 'font-size: 30px;';
+            alert(` G4M3 0V3R!! YOUR SCORE IS ${snake.length - 1}`);
         }
     }
     

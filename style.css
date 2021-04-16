@@ -1,27 +1,33 @@
 body {
-    height: 95vh;
-    width: 95vw;
+    height: 92vh;
+    width: 92vw;
     max-height: 900px;
+    background-color: lightslategray;
 }
 
 header {
     width: 92vw;
     height: 8vh;
-    display: block;
-    text-align: center;
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    background-color: lightslategray;
+    color: lightgreen;
+}
+
+h3 {
+    width: 512px;
+    height: 5vh;
+    display: flex;
+    margin:  auto;
+    justify-content: space-around;
+    align-items: center;
+    background-color: lightgreen;
+    font-size: 30px;
 }
 
 canvas {
     display: block;
-    margin: 60px auto 0;
-}
-
-.score {
-    width: 512px;
-    height: 5vh;
-    display: flex;
-    margin: 3vh auto;
-    justify-content: center;
-    align-items: center;
+    margin: 30px auto 0;
 }
