@@ -3,11 +3,10 @@ let context = canvas.getContext("2d");
 let box = 32;
 let snake = [];
 let direction = "right";
+let points = snake.length;
 let game = setInterval(startGame, 100);
-let speed = 800;
 let showScore = document.getElementById("score");
 let showHighScore = document.getElementById("highScore");
-let points = snake.length;
 let highScore = 0;
 
 snake[0] = {
@@ -28,7 +27,7 @@ function createBG() {
 function createSnake() {
     for(i = 0; i < snake.length; i++){
         context.fillStyle = "black";
-        context.fillRect(snake[i].x, snake[i].y, box, box);
+        context.fillRect(snake[i].x, snake[i].y, box-1, box-1);
     }
 }
 
