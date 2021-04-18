@@ -2,9 +2,12 @@
     --bc-color: lightslategray;
     --header-color: lightgreen;
     --h3-color: lightyellow;
+    --bt-color: black;
 }
 
 body {
+    display: block;
+    margin: auto;
     height: 92vh;
     width: 92vw;
     max-height: 900px;
@@ -26,7 +29,7 @@ h3 {
     width: 512px;
     height: 5vh;
     display: flex;
-    margin:  auto;
+    margin:  1rem auto;
     justify-content: space-around;
     align-items: center;
     font-size: 30px;
@@ -36,4 +39,14 @@ h3 {
 canvas {
     display: block;
     margin: 30px auto 0;
+}
+
+#reset {
+    width: 5rem;
+    height: 2.5rem;
+    display: block;
+    color: var(--bt-color);
+    background-color: var(--header-color);
+    margin: .3rem auto;
+    font: bolder;
 }

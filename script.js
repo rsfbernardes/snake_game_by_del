@@ -4,10 +4,12 @@ let box = 32;
 let snake = [];
 let direction = "right";
 let points = snake.length;
-let game = setInterval(startGame, 100);
+let speed = 100; //velocidade do jogo
+let game = setInterval(startGame, speed);
 let showScore = document.getElementById("score");
 let showHighScore = document.getElementById("highScore");
 let highScore = 0;
+let showRestart = document.getElementById("restart");
 
 snake[0] = {
     x: 8 * box,
@@ -39,6 +41,10 @@ function createFood(){
 function score(){
     showScore.innerHTML = `SCORE: ${snake.length-1}`;
     showHighScore.innerHTML = `HIGHSCORE: ${highScore}`;
+}
+
+function restart(){
+    document.location.reload();
 }
 
 document.addEventListener('keydown', update);
@@ -85,7 +91,7 @@ function startGame() {
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y = Math.floor(Math.random() * 15 + 1) * box;
         for(i = 0; i < snake.length; i++){
-            while (food.x == snake[i].x && food.y == snake[i].y) {
+            while (food.x == snake[i].x && food.y == snake[i].y) { // previne food wont be created on snake's body
                 food.x = Math.floor(Math.random() * 15 + 1) * box;
                 food.y = Math.floor(Math.random() * 15 + 1) * box;
             }
