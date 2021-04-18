@@ -4,6 +4,7 @@ let box = 32;
 let snake = [];
 let direction = "right";
 let game = setInterval(startGame, 100);
+let speed = 800;
 let showScore = document.getElementById("score");
 let showHighScore = document.getElementById("highScore");
 let points = snake.length;
@@ -32,8 +33,8 @@ function createSnake() {
 }
 
 function createFood(){
-    context.fillStyle = "red";
-    context.fillRect(food.x, food.y, box, box);
+        context.fillStyle = "red";
+        context.fillRect(food.x, food.y, box, box);
 }
 
 function score(){
@@ -84,7 +85,14 @@ function startGame() {
     else {
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y = Math.floor(Math.random() * 15 + 1) * box;
+        for(i = 0; i < snake.length; i++){
+            while (food.x == snake[i].x && food.y == snake[i].y) {
+                food.x = Math.floor(Math.random() * 15 + 1) * box;
+                food.y = Math.floor(Math.random() * 15 + 1) * box;
+            }
+        }
     }
+
 
     let newHead = {
         x: snakeX,
