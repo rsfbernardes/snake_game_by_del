@@ -3,12 +3,12 @@ let context = canvas.getContext("2d");
 let box = 32;
 let snake = [];
 let direction = "right";
-let points = snake.length;
+let points = snake.length - 1;
 let speed = 100; //velocidade do jogo
 let game = setInterval(startGame, speed);
 let showScore = document.getElementById("score");
 let showHighScore = document.getElementById("highScore");
-let highScore = 0;
+let highScore = Cookies.get('highScore');
 let showRestart = document.getElementById("restart");
 
 snake[0] = {
