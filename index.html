@@ -18,6 +18,24 @@
         <div class="highScore" id="highScore"></div>
     </h3>
     <canvas id="crazy-snake-game" width="512" height="512"></canvas>
-    <button type="button" id="reset" onclick="restart()">Restart</button>
+    <div class="options" id="options">
+        <button type="button" id="reset" onclick="restart()">Restart</button>
+        <div class="velocity">
+            <fieldset>
+                <legend>Speed</legend>
+                <div id="speed">
+                    <label for="low-speed">
+                        <input type="radio" name="low" id="low" value="1000">Low
+                    </label>
+                    <label for="medium-speed">
+                        <input type="radio" name="medium" id="medium" value="500">Medium
+                    </label>
+                    <label for="high-speed">
+                        <input type="radio" name="high" id="100" checked>High
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+    </div>
 </body>
 </html>

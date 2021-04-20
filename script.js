@@ -3,12 +3,12 @@ let context = canvas.getContext("2d");
 let box = 32;
 let snake = [];
 let direction = "right";
-let points = snake.length - 1;
 let speed = 100; //velocidade do jogo
 let game = setInterval(startGame, speed);
+let points = 0;
 let showScore = document.getElementById("score");
 let showHighScore = document.getElementById("highScore");
-let highScore = Cookies.get('highScore');
+let highestScore = 0;
 let showRestart = document.getElementById("restart");
 
 snake[0] = {
@@ -40,11 +40,21 @@ function createFood(){
 
 function score(){
     showScore.innerHTML = `SCORE: ${snake.length-1}`;
-    showHighScore.innerHTML = `HIGHSCORE: ${highScore}`;
+    showHighScore.innerHTML = `HIGHSCORE: ${highestScore}`;
+}
+
+function storeHighScore(){
+    if (points > highestScore) {
+        highestScore = points;
+    }
 }
 
 function restart(){
     document.location.reload();
+}
+
+function getCookie(){
+    highestScore = Cookies.get('Player');
 }
 
 document.addEventListener('keydown', update);
@@ -63,11 +73,19 @@ function startGame() {
     if(snake[0].x < 0 && direction == "left") snake[0].x = 15 * box;
     if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
     if(snake[0].y < 0 && direction == "up") snake[0].y = 15 * box;
+
+    if (highestScore == 0) {
+       Cookies.set('Player', '0');
+    }
+    else {
+        Cookies.set('Player', highestScore);
+    }
     
     createBG();
     createSnake();
     createFood();
     score();
+    storeHighScore();
 
     for (i = 1; i < snake.length; i++) {
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
@@ -90,6 +108,8 @@ function startGame() {
     else {
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y = Math.floor(Math.random() * 15 + 1) * box;
+        points++;
+        
         for(i = 0; i < snake.length; i++){
             while (food.x == snake[i].x && food.y == snake[i].y) { // previne food wont be created on snake's body
                 food.x = Math.floor(Math.random() * 15 + 1) * box;
@@ -97,7 +117,6 @@ function startGame() {
             }
         }
     }
-
 
     let newHead = {
         x: snakeX,
