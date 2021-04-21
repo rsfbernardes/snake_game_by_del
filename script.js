@@ -10,6 +10,7 @@ let showScore = document.getElementById("score");
 let showHighScore = document.getElementById("highScore");
 let highestScore = 0;
 let showRestart = document.getElementById("restart");
+let end = document.getElementById("game-over");
 
 snake[0] = {
     x: 8 * box,
@@ -57,6 +58,10 @@ function getCookie(){
     highestScore = Cookies.get('Player');
 }
 
+function theEnd() {
+    end.innerHTML = `G4M3 0V3R!! YOUR SCORE IS ${snake.length - 1}`;
+}
+
 document.addEventListener('keydown', update);
 
 function update(event) {
@@ -90,7 +95,8 @@ function startGame() {
     for (i = 1; i < snake.length; i++) {
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
             clearInterval(game);
-            alert(` G4M3 0V3R!! YOUR SCORE IS ${snake.length - 1}`);
+            theEnd();
+            //alert(` G4M3 0V3R!! YOUR SCORE IS ${snake.length - 1}`);
         }
     }
     

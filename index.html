@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script defer src="/script.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>CRAZY SNAKE GAME</title>
 </head>
 <body>
@@ -17,6 +17,7 @@
         <div class="score" id="score"></div>
         <div class="highScore" id="highScore"></div>
     </h3>
+    <p class="game-over" id="game-over"></p>
     <canvas id="crazy-snake-game" width="512" height="512"></canvas>
     <div class="options" id="options">
         <button type="button" id="reset" onclick="restart()">Restart</button>
@@ -25,17 +26,19 @@
                 <legend>Speed</legend>
                 <div id="speed">
                     <label for="low-speed">
-                        <input type="radio" name="low" id="low" value="1000">Low
+                        <input type="radio" name="speed-game" id="low-speed" value="1000">Low
                     </label>
                     <label for="medium-speed">
-                        <input type="radio" name="medium" id="medium" value="500">Medium
+                        <input type="radio" name="speed-game" id="medium-speed" value="500">Medium
                     </label>
                     <label for="high-speed">
-                        <input type="radio" name="high" id="100" checked>High
+                        <input type="radio" name="speed-game" id="high-speed" value="100" checked>High
                     </label>
                 </div>
             </fieldset>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script defer src="/script.js"></script>
 </body>
 </html>

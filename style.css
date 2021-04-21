@@ -58,6 +58,15 @@ canvas {
 #velocity {
     display: flex;
     flex-direction: row;
+}
 
-
+#game-over {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--bt-color);
+    font-family: 'Press Start 2P', sans-serif;
+    z-index: 99;
+    margin: -20px auto;
 }
