@@ -40,7 +40,7 @@ function createFood(){
 }
 
 function score(){
-    showScore.innerHTML = `SCORE: ${snake.length-1}`;
+    showScore.innerHTML = `SCORE: ${points}`;
     showHighScore.innerHTML = `HIGHSCORE: ${highestScore}`;
 }
 
@@ -51,15 +51,32 @@ function storeHighScore(){
 }
 
 function restart(){
-    document.location.reload();
+    //document.location.reload();
+    highestScore = getCookie('Player');
+    score();
+    snake.length = 0;
+    snake[0] = {
+        x: 8 * box,
+        y: 8 * box
+    }
+    food = {
+        x: Math.floor(Math.random() * 15 + 1) * box,
+        y: Math.floor(Math.random() * 15 + 1) * box
+    }
+    end.style.cssText = 'display: none;';
 }
 
-function getCookie(){
-    highestScore = Cookies.get('Player');
+function getCookie(x){
+    highestScore = Cookies.get(x);
+}
+
+function setCookie(name, highestScore){
+    Cookies.set(name,highestScore);
 }
 
 function theEnd() {
-    end.innerHTML = `G4M3 0V3R!! YOUR SCORE IS ${snake.length - 1}`;
+    end.innerHTML = `G4M3 0V3R!! YOUR SCORE IS ${points}`;
+    setCookie('Player', highestScore);
 }
 
 document.addEventListener('keydown', update);
@@ -78,13 +95,6 @@ function startGame() {
     if(snake[0].x < 0 && direction == "left") snake[0].x = 15 * box;
     if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
     if(snake[0].y < 0 && direction == "up") snake[0].y = 15 * box;
-
-    if (highestScore == 0) {
-       Cookies.set('Player', '0');
-    }
-    else {
-        Cookies.set('Player', highestScore);
-    }
     
     createBG();
     createSnake();
@@ -96,7 +106,6 @@ function startGame() {
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
             clearInterval(game);
             theEnd();
-            //alert(` G4M3 0V3R!! YOUR SCORE IS ${snake.length - 1}`);
         }
     }
     
