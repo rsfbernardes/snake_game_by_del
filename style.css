@@ -16,7 +16,7 @@ body {
 
 header {
     width: 92vw;
-    height: 8vh;
+    height: 6vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@ h3 {
     width: 512px;
     height: 5vh;
     display: flex;
-    margin:  1rem auto;
+    margin:  .1rem auto;
     justify-content: space-around;
     align-items: center;
     font-size: 30px;
