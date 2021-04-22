@@ -7,8 +7,6 @@ let speed = 100; //velocidade do jogo
 let game = setInterval(startGame, speed);
 let points = 0;
 let showScore = document.getElementById("score");
-let showHighScore = document.getElementById("highScore");
-let highestScore = 0;
 let showRestart = document.getElementById("restart");
 let end = document.getElementById("game-over");
 
@@ -41,43 +39,12 @@ function createFood(){
 
 function score(){
     showScore.innerHTML = `SCORE: ${points}`;
-    showHighScore.innerHTML = `HIGHSCORE: ${highestScore}`;
-}
-
-function storeHighScore(){
-    if (points > highestScore) {
-        highestScore = points;
-    }
 }
 
 function restart(){
-    //document.location.reload();
-    highestScore = getCookie('Player');
-    score();
-    snake.length = 0;
-    snake[0] = {
-        x: 8 * box,
-        y: 8 * box
-    }
-    food = {
-        x: Math.floor(Math.random() * 15 + 1) * box,
-        y: Math.floor(Math.random() * 15 + 1) * box
-    }
-    end.style.cssText = 'display: none;';
+    document.location.reload();
 }
 
-function getCookie(x){
-    highestScore = Cookies.get(x);
-}
-
-function setCookie(name, highestScore){
-    Cookies.set(name,highestScore);
-}
-
-function theEnd() {
-    end.innerHTML = `G4M3 0V3R!! YOUR SCORE IS ${points}`;
-    setCookie('Player', highestScore);
-}
 
 document.addEventListener('keydown', update);
 
@@ -100,12 +67,11 @@ function startGame() {
     createSnake();
     createFood();
     score();
-    storeHighScore();
 
     for (i = 1; i < snake.length; i++) {
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
             clearInterval(game);
-            theEnd();
+            end.innerHTML = `G4M3 0V3R!! YOUR SCORE IS ${snake.length-1}`;
         }
     }
     
@@ -123,8 +89,7 @@ function startGame() {
     else {
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y = Math.floor(Math.random() * 15 + 1) * box;
-        points++;
-        
+        points++;        
         for(i = 0; i < snake.length; i++){
             while (food.x == snake[i].x && food.y == snake[i].y) { // previne food wont be created on snake's body
                 food.x = Math.floor(Math.random() * 15 + 1) * box;
