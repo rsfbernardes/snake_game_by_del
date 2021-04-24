@@ -50,7 +50,7 @@ function directionTo(){
     if (direction == 'right'){
         switch(path) {
             case 0:
-                direction = 'right';
+                direction = 'down';
                 break;
             case 1:
                 direction = 'up';
@@ -68,7 +68,7 @@ function directionTo(){
                 direction = 'down';
                 break;
             case 6:
-                direction = 'right';
+                direction = 'up';
                 break;
             case 7:
                 direction = 'up'
@@ -87,7 +87,7 @@ function directionTo(){
     else if (direction == 'left') {
         switch(path) {
             case 0:
-                direction = 'left';
+                direction = 'down';
                 break;
             case 1:
                 direction = 'up';
@@ -96,16 +96,16 @@ function directionTo(){
                 direction = 'down';
                 break;
             case 3:
-                direction = 'left'
+                direction = 'up'
                 break;
             case 4:
-                direction = 'up';
+                direction = 'left';
                 break;
             case 5:
-                direction = 'down';
+                direction = 'up';
                 break;
             case 6:
-                direction = 'left';
+                direction = 'down';
                 break;
             case 7:
                 direction = 'up'
@@ -126,7 +126,7 @@ function directionTo(){
                 direction = 'left';
                 break;
             case 1:
-                direction = 'up';
+                direction = 'right';
                 break;
             case 2:
                 direction = 'right';
@@ -144,13 +144,13 @@ function directionTo(){
                 direction = 'left';
                 break;
             case 7:
-                direction = 'up'
+                direction = 'left'
                 break;
             case 8:
                 direction = 'right';
                 break;
             case 9:
-                direction = 'left';
+                direction = 'up';
                 break;
             default:
                 direction = 'down';
@@ -183,7 +183,7 @@ function directionTo(){
                 direction = 'right'
                 break;
             case 8:
-                direction = 'down';
+                direction = 'right';
                 break;
             case 9:
                 direction = 'left';
