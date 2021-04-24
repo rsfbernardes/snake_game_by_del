@@ -3,7 +3,7 @@ let context = canvas.getContext("2d");
 let box = 32;
 let snake = [];
 let direction = "right";
-let speed = 100; //velocidade do jogo
+let speed = 50; //velocidade do jogo
 let game = setInterval(startGame, speed);
 let points = 0;
 let showScore = document.getElementById("score");
@@ -45,6 +45,154 @@ function restart(){
     document.location.reload();
 }
 
+function directionTo(){
+    var path = Math.floor(Math.random() * 10);
+    if (direction == 'right'){
+        switch(path) {
+            case 0:
+                direction = 'right';
+                break;
+            case 1:
+                direction = 'up';
+                break;
+            case 2:
+                direction = 'down';
+                break;
+            case 3:
+                direction = 'right'
+                break;
+            case 4:
+                direction = 'up';
+                break;
+            case 5:
+                direction = 'down';
+                break;
+            case 6:
+                direction = 'right';
+                break;
+            case 7:
+                direction = 'up'
+                break;
+            case 8:
+                direction = 'down';
+                break;
+            case 9:
+                direction = 'right';
+                break;
+            default:
+                direction = 'left'    
+                break;
+        }
+    }
+    else if (direction == 'left') {
+        switch(path) {
+            case 0:
+                direction = 'left';
+                break;
+            case 1:
+                direction = 'up';
+                break;
+            case 2:
+                direction = 'down';
+                break;
+            case 3:
+                direction = 'left'
+                break;
+            case 4:
+                direction = 'up';
+                break;
+            case 5:
+                direction = 'down';
+                break;
+            case 6:
+                direction = 'left';
+                break;
+            case 7:
+                direction = 'up'
+                break;
+            case 8:
+                direction = 'down';
+                break;
+            case 9:
+                direction = 'left';
+                break;
+            default:
+                direction = 'right';
+        }
+    }
+    else if (direction == 'up') {
+        switch(path) {
+            case 0:
+                direction = 'left';
+                break;
+            case 1:
+                direction = 'up';
+                break;
+            case 2:
+                direction = 'right';
+                break;
+            case 3:
+                direction = 'left'
+                break;
+            case 4:
+                direction = 'up';
+                break;
+            case 5:
+                direction = 'right';
+                break;
+            case 6:
+                direction = 'left';
+                break;
+            case 7:
+                direction = 'up'
+                break;
+            case 8:
+                direction = 'right';
+                break;
+            case 9:
+                direction = 'left';
+                break;
+            default:
+                direction = 'down';
+        }
+    }
+    else {
+        switch(path) {
+            case 0:
+                direction = 'left';
+                break;
+            case 1:
+                direction = 'right';
+                break;
+            case 2:
+                direction = 'down';
+                break;
+            case 3:
+                direction = 'left'
+                break;
+            case 4:
+                direction = 'right';
+                break;
+            case 5:
+                direction = 'down';
+                break;
+            case 6:
+                direction = 'left';
+                break;
+            case 7:
+                direction = 'right'
+                break;
+            case 8:
+                direction = 'down';
+                break;
+            case 9:
+                direction = 'left';
+                break;
+            default:
+                direction = 'up';
+        }
+    }
+}
 
 document.addEventListener('keydown', update);
 
@@ -88,14 +236,9 @@ function startGame() {
     }
     else {
         food.x = Math.floor(Math.random() * 15 + 1) * box;
-        food.y = Math.floor(Math.random() * 15 + 1) * box;
-        points++;        
-        for(i = 0; i < snake.length; i++){
-            while (food.x == snake[i].x && food.y == snake[i].y) { // previne food wont be created on snake's body
-                food.x = Math.floor(Math.random() * 15 + 1) * box;
-                food.y = Math.floor(Math.random() * 15 + 1) * box;
-            }
-        }
+        food.y = Math.floor(Math.random() * 15 + 1) * box;       
+        points++;
+        directionTo();
     }
 
     let newHead = {
